@@ -1,0 +1,44 @@
+﻿<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Our Brands</p>
+            <div class="list-group">
+                <a ng-repeat="brand in $ctrl.brands" href="#!/products/brands/{{brand.ID}}" class="list-group-item">{{brand.Name}}</a>
+                <!--<a href="#" class="list-group-item">Brand 1</a>
+                <a href="#" class="list-group-item">Brand 2</a>
+                <a href="#" class="list-group-item">Brand 3</a>-->
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div>
+                <div style="height: 305px">
+                    <div uib-carousel active="active" interval="$ctrl.carouselInterval" no-wrap="$strl.noWrapSlides">
+                        <div uib-slide ng-repeat="slide in $ctrl.categories track by $index" index="$index">
+                            <img ng-src="Images/{{slide.ImageFile}}" style="margin:auto;">
+                            <div class="carousel-caption">
+                                <h4><a href="#!/products/category/{{slide.ID}}">{{slide.Name}}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <div ng-repeat="featuredProduct in $ctrl.featuredProducts | limitTo:6" class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <img ng-src="Images/{{featuredProduct.ImageFile}}" alt="#">
+                        <div class="caption">
+                            <h4 class="pull-right">{{featuredProduct.Price | currency:"Php"}}</h4>
+                            <h4>
+                                <a href  ng-click="$ctrl.openModalComponent(featuredProduct.ID)">{{featuredProduct.Name}}</a>
+                            </h4>
+                            <p>{{featuredProduct.Summary | limitTo:120}}</p>
+                        </div>
+
+                    </div>
+                </div>            
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿
+<div class="modal-body" id="modal-body">
+    <uib-tabset active="active">
+        <uib-tab index="0" heading="{{$ctrl.item.Name}}">
+            <h4>Summary</h4>
+            <p>{{$ctrl.item.Summary}}</p>
+            <h4>Description</h4>
+            <p>{{$ctrl.item.Description}}</p>
+        </uib-tab>
+        <uib-tab index="1" heading="Technical Details">
+            <table class="table table-striped table-hover">
+                <tbody>
+                   <tr ng-repeat="detail in $ctrl.item.PropertyDetails">
+                        <td>{{detail.Name}}</td>
+                        <td>{{detail.Value}}</td>
+                    </tr>
+                </tbody>
+            </table> 
+        </uib-tab>
+    </uib-tabset>
+
+</div>
+<div class="modal-footer">
+    <!--<a href class="btn btn-primary" ng-click="$ctrl.ok()">Details</a>-->
+    <span class="pull-left">{{$ctrl.item.Price | currency:"Php"}}</span><a href class="btn btn-warning" ng-click="$ctrl.cancel()">Close</a>
+</div>

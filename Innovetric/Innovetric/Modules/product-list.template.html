@@ -1,0 +1,34 @@
+﻿<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <p class="lead">Categories</p>
+            <div class="list-group">
+                <a ng-repeat="category in $ctrl.categories" href="#!/products/category/{{category.ID}}" class="list-group-item">{{category.Name}}</a>
+            </div>
+            <p class="lead">Brands</p>
+            <div class="list-group">
+                <a ng-repeat="brand in $ctrl.brands" href="#!/products/brands/{{brand.ID}}" class="list-group-item">{{brand.Name}}</a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <h2>{{$ctrl.selectionName}}</h2>
+            </div>
+            <div class="row">
+                <div ng-repeat="product in $ctrl.products | orderBy:product.Featured" class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="thumbnail">
+                        <img ng-src="Images/{{product.ImageFile}}" alt="#">
+                        <div class="caption">
+                            <h4 class="pull-right">{{product.Price | currency:"Php"}}</h4>
+                            <h4>
+                                <a href ng-click="$ctrl.openModalComponent(product.ID)">{{product.Name}}</a>
+                            </h4>
+                            <p>{{product.Summary | limitTo:120}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
